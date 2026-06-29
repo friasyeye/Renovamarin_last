@@ -50,7 +50,7 @@ export function NewsSection() {
           </p>
           <a
             href="#"
-            className="rounded-full bg-[var(--color-red)] px-8 py-3.5 text-[13px] font-medium text-[var(--color-cream)] transition-colors duration-300 hover:bg-[var(--color-red-bright)]"
+            className="rounded-full bg-[var(--color-red)] px-8 py-3.5 text-[13px] font-medium text-[var(--color-cream)] transition-colors duration-300 hover:bg-[var(--color-cream)] hover:text-[var(--color-red)]"
           >
             View all News
           </a>

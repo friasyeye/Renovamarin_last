@@ -10,8 +10,6 @@ import type {
 
 const img = (file: string) => `/images/${file}`;
 
-export const HERO_VIDEO = "/videos/hero.mp4";
-export const LUXURY_VIDEO = "/videos/4qFn1E4Qr2SgEglIXimZM1icjQ.mp4";
 
 export const introPortraits = [
   img("6FbTY3JIsbASOUKoQPyq1X6moU.png"),
@@ -55,6 +53,7 @@ export const services: Service[] = [
     description:
       "Renovamos tu vivienda de principio a fin,\ngestionando cada fase de la obra\nen el plazo acordado.",
     image: img("servicios_integral.webp"),
+    href: "/servicios/reformas-integrales",
   },
   {
     number: "02",
@@ -62,7 +61,8 @@ export const services: Service[] = [
     tags: ["Diseño", "Materiales", "Instalación completa"],
     description:
       "Diseñamos y ejecutamos la cocina que siempre quisiste, desde la distribución hasta el último electrodoméstico.",
-    image: img("servicios_cocina.jpg"),
+    image: img("servicios_cocina.webp"),
+    href: "/servicios/reformas-cocinas",
   },
   {
     number: "03",
@@ -71,6 +71,7 @@ export const services: Service[] = [
     description:
       "Transformamos tu baño con instalación completa, en el plazo que acordamos y dejándolo todo limpio.",
     image: img("servicios_baño.webp"),
+    href: "/servicios/reformas-banos",
   },
   {
     number: "04",
@@ -78,7 +79,8 @@ export const services: Service[] = [
     tags: ["Adecuación", "Licencias", "Llave en mano"],
     description:
       "Adecuamos tu local para que puedas abrir cuanto antes, gestionando obra y trámites.",
-    image: img("servicios_local.png"),
+    image: img("servicios_local.webp"),
+    href: "/servicios/reformas-locales",
   },
 ];
 

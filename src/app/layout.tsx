@@ -28,12 +28,9 @@ const caslon = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Maravilla",
+  title: "Reformas Integrales en Barcelona | Renovamarin",
   description:
-    "Our spaces are designed to offer more than comfort — they create an atmosphere where guests can unwind, connect, and experience.",
-  icons: {
-    icon: "/seo/rL3xTmP2lgu72fbUlLFhDYttp8.png",
-  },
+    "✔️ Presupuesto cerrado y plazos garantizados · Reformas de pisos, cocinas y baños en Barcelona · Más de 30 años de experiencia · 5⭐ en Google → Pide tu visita sin compromiso",
 };
 
 export default function RootLayout({
@@ -43,7 +40,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="es"
       className={`${dmSans.variable} ${gochi.variable} ${caslon.variable} antialiased`}
     >
       <body>{children}</body>

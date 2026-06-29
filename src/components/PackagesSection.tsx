@@ -53,7 +53,7 @@ export function PackagesSection() {
             </p>
             <a
               href="#"
-              className="self-start rounded-full bg-[var(--color-red)] px-8 py-3.5 text-[13px] font-medium text-[var(--color-cream)] transition-colors duration-300 hover:bg-[var(--color-red-bright)]"
+              className="self-start rounded-full bg-[var(--color-red)] px-8 py-3.5 text-[13px] font-medium text-[var(--color-cream)] transition-colors duration-300 hover:bg-[var(--color-cream)] hover:text-[var(--color-red)]"
             >
               Explore all Packages
             </a>

@@ -10,6 +10,8 @@ interface RevealProps {
   delay?: number;
   /** "fade" = slide up + fade · "mask" = clip-path line reveal (for display headings). */
   variant?: "fade" | "mask";
+  /** Activate on mount without waiting for scroll — use for above-the-fold content. */
+  immediate?: boolean;
 }
 
 /** Animates content into view when it scrolls into the viewport (IntersectionObserver). */
@@ -19,12 +21,19 @@ export function Reveal({
   as: Tag = "div",
   delay = 0,
   variant = "fade",
+  immediate = false,
 }: RevealProps) {
   const ref = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
+    // Above-the-fold content: reveal on mount, no scroll required.
+    if (immediate) {
+      const t = setTimeout(() => el.classList.add("is-visible"), delay + 40);
+      return () => clearTimeout(t);
+    }
 
     let activated = false;
     const activate = () => {
@@ -54,7 +63,7 @@ export function Reveal({
     }
 
     return () => io.disconnect();
-  }, [delay]);
+  }, [delay, immediate]);
 
   return (
     <Tag

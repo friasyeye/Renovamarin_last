@@ -44,7 +44,11 @@ function buildPath(anchorYs: number[], VB_H: number): string {
   const cx = 50;
   const tension = 0.38;
 
-  let d = `M ${cx} 0 L ${cx} ${anchorYs[0]}`;
+  // Small lead-in curve before the first card
+  const preX1 = cx + 12;
+  const preX2 = cx - 10;
+  const a0 = anchorYs[0];
+  let d = `M ${cx} 0 C ${preX1} ${a0 * 0.3}, ${preX2} ${a0 * 0.7}, ${cx} ${a0}`;
 
   for (let i = 1; i < anchorYs.length; i++) {
     const y0 = anchorYs[i - 1];
@@ -194,9 +198,14 @@ export function ProcessSection() {
         <Reveal
           as="h2"
           variant="mask"
-          className="mb-20 text-center font-serif text-[clamp(36px,5vw,72px)] font-medium leading-[0.9] text-[var(--color-red)]"
+          className="mb-4 text-center font-serif text-[clamp(36px,5vw,72px)] font-medium leading-[0.9] text-[var(--color-red)]"
         >
-          Así trabajamos
+          Cómo lo hacemos
+        </Reveal>
+        <Reveal delay={120} className="mb-20 text-center">
+          <p className="font-sans text-[15px] font-normal leading-snug text-[var(--color-ink)]/50">
+            De la primera llamada a la entrega final, sin sorpresas.
+          </p>
         </Reveal>
 
         <div ref={containerRef} className="relative flex flex-col gap-20">

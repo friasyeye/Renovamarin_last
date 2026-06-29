@@ -2,16 +2,24 @@
 
 import { useEffect, useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 
 const servicios = [
-  { label: "Reformas integrales", href: "#reformas-integrales" },
-  { label: "Reformas de cocinas", href: "#reformas-cocinas" },
-  { label: "Reformas de baños", href: "#reformas-banos" },
-  { label: "Reformas de locales", href: "#reformas-locales" },
+  { label: "Reformas integrales", href: "/servicios/reformas-integrales" },
+  { label: "Reformas de cocinas", href: "/servicios/reformas-cocinas" },
+  { label: "Reformas de baños", href: "/servicios/reformas-banos" },
+  { label: "Reformas de locales", href: "/servicios/reformas-locales" },
 ];
 
-export function Header() {
+interface HeaderProps {
+  /** Color del hero bajo el header antes de hacer scroll.
+   *  "dark" = hero oscuro (home) → enlaces blancos.
+   *  "light" = hero claro (páginas de servicio) → enlaces oscuros. */
+  theme?: "dark" | "light";
+}
+
+export function Header({ theme = "dark" }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [serviciosOpen, setServiciosOpen] = useState(false);
 
@@ -22,9 +30,12 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Texto oscuro cuando hay scroll (fondo crema) o cuando el hero es claro.
+  const darkText = scrolled || theme === "light";
+
   const linkClass = cn(
     "text-[13px] font-medium tracking-normal transition-colors duration-200",
-    scrolled ? "text-[var(--color-ink)] hover:text-[var(--color-red)]" : "text-white/85 hover:text-white",
+    darkText ? "text-[var(--color-ink)] hover:text-[var(--color-red)]" : "text-white/85 hover:text-white",
   );
 
   return (
@@ -37,7 +48,7 @@ export function Header() {
       <div className="mx-auto flex h-[74px] items-center justify-between px-5 md:px-8">
 
         {/* Logo — izquierda */}
-        <a href="/">
+        <Link href="/">
           <Image
             src="/images/logo-leon.png"
             alt="Renovamarín"
@@ -45,7 +56,7 @@ export function Header() {
             height={22}
             className="object-contain"
           />
-        </a>
+        </Link>
 
         {/* Nav desktop */}
         <nav className="hidden items-center gap-8 md:flex">
@@ -72,7 +83,7 @@ export function Header() {
             )}>
               <div className="min-w-[220px] overflow-hidden rounded-xl border border-[var(--color-stone)]/15 bg-white shadow-[0_8px_32px_rgba(0,0,0,0.10)]">
                 {servicios.map((s, i) => (
-                  <a
+                  <Link
                     key={s.href}
                     href={s.href}
                     className={cn(
@@ -81,21 +92,21 @@ export function Header() {
                     )}
                   >
                     {s.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>
           </div>
 
-          <a href="#proyectos" className={linkClass}>Proyectos</a>
-          <a href="#calculadora" className={linkClass}>Calculadora reformas</a>
-          <a href="#contacto" className={linkClass}>Contacto</a>
+          <Link href="/galeria" className={linkClass}>Galería</Link>
+          <Link href="/calculadora" className={linkClass}>Calculadora reformas</Link>
+          <Link href="/contacto" className={linkClass}>Contacto</Link>
         </nav>
 
         {/* Mobile — hamburguesa */}
         <button className={cn(
           "flex items-center gap-1.5 text-[13px] tracking-wide transition-colors md:hidden",
-          scrolled ? "text-[var(--color-ink)]" : "text-white",
+          darkText ? "text-[var(--color-ink)]" : "text-white",
         )}>
           <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
             <path d="M3 6h16M3 11h16M3 16h16" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />

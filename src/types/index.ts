@@ -12,6 +12,7 @@ export interface Service {
   tags: string[];
   description: string;
   image: string;
+  href: string;
 }
 
 export interface WalkStat {
